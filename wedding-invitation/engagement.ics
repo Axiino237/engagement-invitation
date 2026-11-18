@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Abinash and Menaka//Engagement//EN
+BEGIN:VEVENT
+UID:engagement-20261122@abinash-menaka
+DTSTAMP:20261116T000000Z
+DTSTART:20261122T050000Z
+DTEND:20261122T073000Z
+SUMMARY:Abinash & Menaka - Engagement
+LOCATION:P. R. Mahal\, 95 Subbarayan Main Street\, Nammalwarpet\, Chennai - 12
+DESCRIPTION:Map: https://maps.app.goo.gl/LC4wDDxcjUQ6tudJ8
+END:VEVENT
+END:VCALENDAR

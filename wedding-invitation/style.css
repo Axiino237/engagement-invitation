@@ -1,0 +1,1065 @@
+/* =========================================================
+   WEDDING INVITATION - MOBILE FIRST STYLES
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --gold-primary: #d4af37;
+  --gold-light: #fef0a5;
+  --gold-dark: #aa771c;
+  --maroon-deep: #2a0308;
+  --maroon-royal: #5e0c15;
+  --card-aspect-ratio: 571 / 1024;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #120306;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background atmosphere with warm ambient glow */
+body {
+  background: radial-gradient(circle at 50% 40%, #3d0711 0%, #1a0206 50%, #0d0103 100%);
+  position: relative;
+}
+
+/* Background floating golden particles */
+.sparkles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffeaa7 10%, #d4af37 60%, transparent 80%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatSparkle 6s infinite ease-in-out;
+}
+
+@keyframes floatSparkle {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  70% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   INVITATION APP (MOBILE CONTAINER)
+   ========================================================= */
+.invitation-container {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  height: 100dvh;
+  background: #000;
+  overflow: hidden;
+  user-select: none;
+  z-index: 2;
+}
+
+/* Centered card mockup on desktop / tablet screens */
+@media (min-width: 481px) {
+  .invitation-container {
+    width: min(440px, calc(92vh * (571 / 1024)));
+    height: min(calc(440px * (1024 / 571)), 92vh);
+    max-width: 440px;
+    max-height: calc(440px * (1024 / 571));
+    aspect-ratio: var(--card-aspect-ratio);
+    border-radius: 20px;
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.85),
+      0 0 35px rgba(212, 175, 55, 0.25),
+      inset 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* =========================================================
+   REPLAY / CLOSE BUTTON
+   ========================================================= */
+.replay-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(45, 6, 12, 0.75);
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  color: #fef0a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(212, 175, 55, 0.3);
+  opacity: 0;
+  transform: scale(0.7) rotate(-90deg);
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.replay-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.replay-btn:hover {
+  background: rgba(94, 12, 21, 0.95);
+  transform: scale(1.08) rotate(0deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+.invitation-container.is-opened .replay-btn {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  pointer-events: auto;
+  transition-delay: 3.8s;
+}
+
+/* =========================================================
+   INNER VIEW (MANDAP SCENE + HANDS)
+   ========================================================= */
+.inner-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  background: #111;
+}
+
+.bg-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Kuthuvilakku Lamps Subtle Glow & Flicker */
+.lamp-glow {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.45) 0%, rgba(255, 140, 0, 0.25) 45%, transparent 75%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  animation: diyaFlicker 3s infinite alternate ease-in-out;
+}
+
+.lamp-left {
+  left: 20px;
+  top: 53%;
+}
+
+.lamp-right {
+  right: 20px;
+  top: 53%;
+  animation-delay: 1.5s;
+}
+
+@keyframes diyaFlicker {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: scale(1.0);
+  }
+}
+
+/* =========================================================
+   HANDS STAGE (Giving & Receiving Animation)
+   ========================================================= */
+.hands-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hand-wrapper {
+  position: absolute;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.hand-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+
+/* Receiving Hands (from left) */
+.receiving-hand {
+  width: 90%;
+  left: -2%;
+  top: 47%;
+  z-index: 11;
+  opacity: 0;
+  transform: translateX(-110%);
+  transition:
+    transform 1.2s ease-in,
+    opacity 0.8s ease;
+}
+
+/* Giving Hands with Thamboolam Plate (from right) */
+.giving-hand {
+  width: 95%;
+  right: 0%;
+  top: 42%;
+  z-index: 12;
+  opacity: 0;
+  transform: translateX(110%);
+  transition:
+    transform 1.2s ease-in,
+    opacity 0.8s ease;
+}
+
+/* Active State: When Card is Opened */
+.invitation-container.is-opened .receiving-hand {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    transform 3.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 2.2s ease;
+  transition-delay: 0.8s;
+}
+
+.invitation-container.is-opened .giving-hand {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    transform 3.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 2.2s ease;
+  transition-delay: 0.8s;
+}
+
+/* Hands gentle floating animation after arriving */
+.invitation-container.is-opened.hands-settled .hands-stage {
+  animation: handsGentleFloat 5.5s ease-in-out infinite;
+}
+
+@keyframes handsGentleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================================
+   COVER: CARD SPLIT ALONG THE GOLDEN BORDER (tap to open)
+   ========================================================= */
+.cover-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  cursor: pointer;
+  outline: none;
+}
+
+.cover-view:focus-visible .flap-top {
+  filter: drop-shadow(0 0 6px rgba(254, 240, 165, 0.9));
+}
+
+/* Once open, the cover must never swallow taps meant for the scene behind it */
+.invitation-container.is-opened .cover-view {
+  pointer-events: none;
+  cursor: default;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition:
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s ease;
+  display: flex;
+}
+
+.flap-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* Bottom half: tucked under the top half, slides DOWN */
+.flap-bottom {
+  z-index: 21;
+}
+
+/* Top half: golden curve edge + medallion, slides UP */
+.flap-top {
+  z-index: 22;
+}
+
+/* Soft shadows appear only while the halves part, so the closed card
+   looks exactly like the artwork. */
+.invitation-container.is-opened .flap-top {
+  transform: translateY(-106%);
+  transition: transform 3.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.75));
+}
+
+.invitation-container.is-opened .flap-bottom {
+  transform: translateY(106%);
+  transition: transform 3.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+  filter: drop-shadow(0 -10px 18px rgba(0, 0, 0, 0.75));
+}
+
+/* Small press feedback before the card opens (only when closed) */
+.invitation-container:not(.is-opened) .cover-view:active .flap-top {
+  transform: translateY(-3px);
+  transition-duration: 0.15s;
+}
+
+.invitation-container:not(.is-opened) .cover-view:active .flap-bottom {
+  transform: translateY(3px);
+  transition-duration: 0.15s;
+}
+
+/* Gentle "tap to open" hint (same style as the "Tap to continue" hint) */
+.open-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 81.5%;
+  z-index: 23;
+  text-align: center;
+  font: 600 11px 'Cinzel', serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #fef0a5;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  opacity: 0.9;
+  animation: openHintPulse 2.6s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes openHintPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.invitation-container.is-opened .open-hint {
+  animation: none;
+  opacity: 0;
+}
+
+/* =========================================================
+   SCREEN 3: GLOW TRANSITION + GOPURAM SCROLL + CURTAIN WIPE
+   ========================================================= */
+.inner-view.is-ready {
+  cursor: pointer;
+}
+
+.glow-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.2);
+  background: radial-gradient(circle at 50% 60%, #ffffff 0%, #fff3b0 28%, rgba(255, 196, 80, 0.75) 52%, transparent 74%);
+  mix-blend-mode: screen;
+}
+
+.glow-flash.play {
+  animation: glowFlash 1.9s ease-in-out forwards;
+}
+
+@keyframes glowFlash {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(2.4);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(2.6);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+.gopuram-view {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  overflow: hidden;
+  background: #6fb4ee;
+  visibility: hidden;
+  opacity: 0;
+  touch-action: none;
+}
+
+.gopuram-view.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.gopuram-img {
+  position: absolute;
+  top: 0;
+  left: -55%;
+  width: 210%;
+  max-width: none;
+  height: auto;
+  display: block;
+  will-change: transform;
+}
+
+.mandapam-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  clip-path: inset(100% 0 0 0);
+  -webkit-clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.mandapam-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.curtain-edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 3px;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #fef0a5, transparent);
+  box-shadow: 0 0 12px 4px rgba(254, 240, 165, 0.7);
+  will-change: top, opacity;
+  transform: translateZ(0);
+}
+
+/* =========================================================
+   ADDITIONS: names, sky text, final scene
+   ========================================================= */
+:root {
+  --script: 'Imperial Script', 'Snell Roundhand', cursive;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --ink: #4a1018;
+}
+
+/* Cinematic slow push-in + vignette on hands scene */
+.invitation-container.is-opened .bg-scene {
+  animation: kenburns 24s ease-out forwards;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.07);
+  }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(10, 8, 4, 0.5) 100%);
+}
+
+/* Names in the light panel, above the hands */
+.names {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 17%;
+  z-index: 9;
+  text-align: center;
+  font-family: var(--script);
+  color: var(--ink);
+  pointer-events: none;
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.85), 0 2px 6px rgba(255, 255, 255, 0.5);
+}
+
+.name-line {
+  font-size: clamp(50px, 15.5vw, 68px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.name-amp {
+  font-size: clamp(28px, 8vw, 36px);
+  line-height: 1;
+  margin: 2px 0;
+  color: var(--gold-dark);
+}
+
+.names .ch {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(12px) scale(1.1);
+}
+
+.invitation-container.is-opened .names .ch {
+  animation: chReveal 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(3.0s + var(--i) * 0.18s);
+}
+
+@keyframes chReveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+.name-rule {
+  width: 0;
+  height: 1px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.invitation-container.is-opened .name-rule {
+  animation: ruleGrow 2.6s ease-out 6.8s forwards;
+}
+
+@keyframes ruleGrow {
+  to {
+    width: 80%;
+  }
+}
+
+.tap-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(2.2% + env(safe-area-inset-bottom, 0px));
+  z-index: 15;
+  text-align: center;
+  font: 600 11px 'Cinzel', serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #fef0a5;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.invitation-container.hands-settled .tap-hint {
+  animation: hintPulse 2.6s ease-in-out 5s infinite;
+}
+
+@keyframes hintPulse {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Scene 2 text on the sky (moves with the gopuram image) */
+.sky-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13.5%;
+  z-index: 1;
+  text-align: center;
+  pointer-events: none;
+  will-change: transform;
+  padding: 0 6%;
+  filter: drop-shadow(0 1px 4px rgba(40, 20, 0, 0.5));
+}
+
+.sl {
+  display: block;
+}
+
+.sl1 {
+  font-family: var(--script);
+  font-size: clamp(38px, 11.5vw, 54px);
+  line-height: 1.15;
+  white-space: nowrap;
+  -webkit-text-stroke: 0.7px #a86600;
+}
+
+.sl2 {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 7px 0 5px;
+  -webkit-text-stroke: 0.4px #945800;
+}
+
+.sl3 {
+  font-family: var(--script);
+  font-size: clamp(36px, 11vw, 52px);
+  line-height: 1.15;
+  white-space: nowrap;
+  -webkit-text-stroke: 0.7px #a86600;
+}
+
+.sl4 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  -webkit-text-stroke: 0.4px #945800;
+}
+
+.sl5 {
+  margin-top: 18px;
+}
+
+.sky-text .word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: none;
+  color: #d48800;
+  background: linear-gradient(115deg,
+      #df9500 22%,
+      #ffd438 42%,
+      #fff3a0 50%,
+      #ffd438 58%,
+      #df9500 78%,
+      #b86d00 100%);
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gopuram-view.show .sky-text .word {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0s);
+  animation: goldSheen 4s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+@keyframes goldSheen {
+
+  0%,
+  15% {
+    background-position: 100% 0;
+  }
+
+  65%,
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.sl5 .word {
+  position: relative;
+  isolation: isolate;
+  font: 900 12.5px 'Cinzel', serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  border: 1.5px solid #b87300;
+  border-radius: 999px;
+  padding: 7px 22px;
+  box-shadow: 0 2px 10px rgba(140, 70, 0, 0.25);
+  -webkit-text-stroke: 0.4px #8a4e00;
+}
+
+.sl5 .word::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 240, 190, 0.22) 100%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 999px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gopuram-view.show .sl5 {
+  animation: scrollBounce 2.4s ease-in-out infinite;
+  animation-delay: 2.6s;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Scene 3: fixed background, moving elements, scrolling cards */
+.mandapam-img {
+  animation: bgBreathe 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgBreathe {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.final-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sun-sweep {
+  position: absolute;
+  inset: -20%;
+  mix-blend-mode: soft-light;
+  opacity: 0.8;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 240, 200, 0.7) 48%, transparent 62%);
+  background-size: 200% 100%;
+  animation: sweep 11s ease-in-out infinite alternate;
+}
+
+@keyframes sweep {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0% 0;
+  }
+}
+
+.petal {
+  position: absolute;
+  top: -6%;
+  width: 11px;
+  height: 15px;
+  border-radius: 70% 0 70% 0;
+  opacity: 0.85;
+  animation: petalFall linear infinite, petalSway ease-in-out infinite alternate;
+}
+
+@keyframes petalFall {
+  from {
+    top: -6%;
+  }
+
+  to {
+    top: 106%;
+  }
+}
+
+@keyframes petalSway {
+  from {
+    transform: translateX(-18px) rotate(-30deg);
+  }
+
+  to {
+    transform: translateX(22px) rotate(160deg);
+  }
+}
+
+.mote {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff3c4 10%, rgba(212, 175, 55, 0.55) 60%, transparent 80%);
+  animation: moteFloat ease-in-out infinite alternate;
+  opacity: 0;
+}
+
+@keyframes moteFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(18px, -40px);
+    opacity: 0;
+  }
+}
+
+.final-scroll {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  padding: 36% 8% calc(14% + env(safe-area-inset-bottom, 0px));
+  scrollbar-width: none;
+}
+
+.final-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  background: rgba(255, 251, 243, 0.84);
+  border: 1px solid rgba(176, 138, 78, 0.55);
+  border-radius: 4px;
+  box-shadow: 0 10px 34px rgba(60, 40, 10, 0.15), inset 0 0 0 4px rgba(255, 255, 255, 0.45);
+  padding: 30px 22px;
+  margin-bottom: 36px;
+  text-align: center;
+  color: #3d2a1c;
+  font-family: var(--serif);
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card.in {
+  opacity: 1;
+  transform: none;
+}
+
+.card h2 {
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 1.1;
+  color: var(--gold-dark);
+}
+
+.card .rule {
+  width: 46px;
+  height: 1px;
+  background: var(--gold-dark);
+  margin: 8px auto 16px;
+}
+
+.card p {
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 4px 0;
+}
+
+.card p.strong {
+  font-weight: 600;
+  font-size: 23px;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.btn {
+  font: 600 14px var(--serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3d2a1c;
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--gold-dark);
+  background: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+  background: var(--gold-dark);
+  color: #fff;
+}
+
+.ics {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 15px;
+  color: #7a5a2a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 3px;
+  cursor: zoom-in;
+  display: block;
+}
+
+#rsvpForm {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+#rsvpForm input,
+#rsvpForm select {
+  font: 500 18px var(--serif);
+  padding: 9px 11px;
+  border: 1px solid rgba(176, 138, 78, 0.6);
+  background: rgba(255, 255, 255, 0.6);
+  color: #3d2a1c;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.ok {
+  display: none;
+  margin-top: 12px !important;
+}
+
+.thanks .sign {
+  font-family: var(--script);
+  font-size: 44px !important;
+  color: var(--gold-dark);
+  margin-top: 14px !important;
+}
+
+.lightbox {
+  position: absolute;
+  inset: 0;
+  z-index: 70;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 6, 4, 0.9);
+  cursor: zoom-out;
+}
+
+.lightbox.on {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 92%;
+  max-height: 88%;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .petal,
+  .mote,
+  .sun-sweep,
+  .mandapam-img,
+  .sl5 {
+    animation: none;
+  }
+}

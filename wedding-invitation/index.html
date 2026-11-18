@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Abinash &amp; Menaka – Engagement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Cormorant+Garamond:wght@500;600&family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient festive particles / sparkles in the background -->
+  <div class="sparkles-container" id="sparkles"></div>
+
+  <!-- Mobile phone wrapper -->
+  <main class="invitation-container" id="invitationApp">
+
+    <!-- Controls (Reset / Replay) -->
+    <button class="replay-btn" id="replayBtn" title="Close / Replay" aria-label="Replay invitation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+        <path d="M3 3v5h5" />
+      </svg>
+    </button>
+
+    <!-- INNER VIEW (Image 4 Scene with Garlands, Lamps, Table, and Hands) -->
+    <div class="inner-view" id="innerView">
+      <img src="assets/inner_bg.jpg" alt="Auspicious Wedding Mandap Background" class="bg-scene">
+
+      <!-- Festive Diyas Glow Overlay -->
+      <div class="lamp-glow lamp-left"></div>
+      <div class="lamp-glow lamp-right"></div>
+
+      <!-- Names in the light panel, above the hands -->
+      <div class="names" id="names" aria-label="Abinash and Menaka">
+        <div class="name-line" data-t="Abinash"></div>
+        <div class="name-amp" data-t="&amp;"></div>
+        <div class="name-line" data-t="Menaka"></div>
+        <div class="name-rule"></div>
+      </div>
+      <div class="vignette"></div>
+      <div class="tap-hint">Tap to continue</div>
+
+      <!-- Hands Presentation Layer (Receiving from left, Giving from right) -->
+      <div class="hands-stage" id="handsStage">
+        <!-- Receiving Hands (Image 3 - Red bangles, palms up to receive) -->
+        <div class="hand-wrapper receiving-hand" id="receivingHand">
+          <img src="assets/receiving_hands.png" alt="Receiving hands" class="hand-img">
+        </div>
+
+        <!-- Giving Hands with Thamboolam Plate (Image 5 - Golden plate, coconut, betel, saree) -->
+        <div class="hand-wrapper giving-hand" id="givingHand">
+          <img src="assets/giving_hands.png" alt="Giving hands with plate" class="hand-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- GOPURAM SCENE (scroll-driven) + MANDAPAM CURTAIN WIPE -->
+    <div class="gopuram-view" id="gopuramView">
+      <img src="assets/gopuram.jpg" alt="" class="gopuram-img" id="gopuramImg">
+      <div class="sky-text" id="skyText">
+        <span class="sl sl1">We are inviting you</span>
+        <span class="sl sl2">for our engagement on</span>
+        <span class="sl sl3">22nd Nov, 2026</span>
+        <span class="sl sl4">10:30 AM</span>
+        <span class="sl sl5">Scroll &#8595;</span>
+      </div>
+      <div class="mandapam-layer" id="mandapamLayer">
+        <img src="assets/mandapam.jpg" alt="" class="mandapam-img">
+        <div class="final-fx" id="finalFx">
+          <div class="sun-sweep"></div>
+        </div>
+        <div class="final-scroll" id="finalScroll">
+          <section class="card" id="venue">
+            <h2>Venue</h2>
+            <div class="rule"></div>
+            <p class="strong">P. R. Mahal</p>
+            <p>95 Subbarayan Main Street,<br>Nammalwarpet, Chennai - 12.</p>
+            <div class="btns">
+              <a class="btn" target="_blank" rel="noopener"
+                href="https://maps.app.goo.gl/LC4wDDxcjUQ6tudJ8?g_st=ac">View Map</a>
+              <a class="btn" target="_blank" rel="noopener"
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Abinash+%26+Menaka+Engagement&amp;dates=20261122T103000/20261122T130000&amp;ctz=Asia/Kolkata&amp;location=P.+R.+Mahal,+95+Subbarayan+Main+Street,+Nammalwarpet,+Chennai+-+12">Add
+                to Calendar</a>
+            </div>
+            <a class="ics" href="engagement.ics" download>or download .ics file</a>
+          </section>
+          <section class="card" id="gallery">
+            <h2>Gallery</h2>
+            <div class="rule"></div>
+            <div class="grid">
+              <img loading="lazy" src="assets/couple_1.png" alt="Abinash &amp; Menaka">
+              <img loading="lazy" src="assets/couple_2.png" alt="Abinash &amp; Menaka">
+            </div>
+          </section>
+          <!-- <section class="card" id="rsvp">
+            <h2>RSVP</h2><div class="rule"></div>
+            <form id="rsvpForm">
+              <input id="rName" placeholder="Your name" required>
+              <select id="rAttend" aria-label="Attending"><option>Joyfully attending</option><option>Regretfully unable</option></select>
+              <input id="rGuests" type="number" min="1" max="10" value="1" aria-label="Number of guests">
+              <button class="btn" type="submit">Send RSVP</button>
+            </form>
+            <p id="rOk" class="ok">Thank you! Your response is noted.</p>
+          </section> -->
+          <section class="card thanks" id="thanks">
+            <h2>Thank you</h2>
+            <div class="rule"></div>
+            <p>Your presence and blessings<br>will make our day complete.</p>
+            <p class="sign">Abinash &amp; Menaka</p>
+          </section>
+        </div>
+      </div>
+      <div class="curtain-edge" id="curtainEdge"></div>
+    </div>
+
+    <!-- Golden glow transition overlay -->
+    <div class="glow-flash" id="glowFlash"></div>
+
+    <!-- FRONT COVER: card split along its golden border. Tap anywhere on the card to open. -->
+    <div class="cover-view" id="coverView" role="button" tabindex="0" aria-label="Tap to open invitation">
+      <!-- Bottom half (slides down) -->
+      <div class="flap flap-bottom" id="flapBottom">
+        <img src="assets/cover_bottom.png" alt="" class="flap-img" draggable="false">
+      </div>
+
+      <!-- Top half with the golden curve & medallion (slides up) -->
+      <div class="flap flap-top" id="flapTop">
+        <img src="assets/cover_top.png" alt="Wedding invitation card" class="flap-img" draggable="false">
+      </div>
+
+      <div class="open-hint">Tap to open</div>
+    </div>
+
+    <div class="lightbox" id="lightbox"><img alt=""></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
