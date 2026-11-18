@@ -11,7 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Cormorant+Garamond:wght@500;600&family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -138,6 +138,9 @@
 
       <div class="open-hint">Tap to open</div>
     </div>
+
+    <!-- Watermark -->
+    <div class="watermark" aria-hidden="true" style="position:absolute;bottom:calc(12px + env(safe-area-inset-bottom, 0px));left:calc(14px + env(safe-area-inset-left, 0px));z-index:9999;pointer-events:none;user-select:none;font-family:'Cinzel',serif;font-size:clamp(7.5px,2vw,9px);font-weight:600;letter-spacing:0.1em;color:#fef0a5;opacity:0.6;text-shadow:0 1px 3px rgba(0,0,0,0.85),0 0 1px rgba(0,0,0,0.95);white-space:nowrap;">developed by Axiino</div>
 
     <div class="lightbox" id="lightbox"><img alt=""></div>
   </main>
