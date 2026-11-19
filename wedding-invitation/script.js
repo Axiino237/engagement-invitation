@@ -249,6 +249,13 @@ document.addEventListener('DOMContentLoaded', () => {
     closeInvitation();
   });
 
+  const watermarkLink = document.getElementById('watermarkLink');
+  if (watermarkLink) {
+    watermarkLink.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
   // Generate Festive Background Sparkles
   function createSparkles() {
     if (!sparklesContainer) return;
